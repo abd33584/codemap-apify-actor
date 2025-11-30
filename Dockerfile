@@ -4,8 +4,8 @@ FROM apify/actor-node:16
 # Switch to root user to install packages
 USER root
 
-# Install curl and unzip using apk (Alpine Linux package manager)
-RUN apk add --no-cache curl unzip
+# Install curl, unzip, and git using apk (Alpine Linux package manager)
+RUN apk add --no-cache curl unzip git
 
 # Copy package files
 COPY package*.json ./
