@@ -10,9 +10,11 @@ const { extractRepoName } = require('./github-cloner');
  * @param {Object} codemapResult - Raw codemap results
  * @param {string} repositoryUrl - Repository URL
  * @param {string} format - Output format (markdown, json, both)
+ * @param {Object} analysis - Deep code analysis results
+ * @param {string} visualReport - Visual diagrams and charts
  * @returns {Promise<Object>} Formatted output
  */
-async function formatOutput(codemapResult, repositoryUrl, format = 'markdown') {
+async function formatOutput(codemapResult, repositoryUrl, format = 'markdown', analysis = null, visualReport = '') {
     const repoName = extractRepoName(repositoryUrl);
     const timestamp = new Date().toISOString();
 
@@ -20,18 +22,30 @@ async function formatOutput(codemapResult, repositoryUrl, format = 'markdown') {
         repository: repoName,
         repositoryUrl: repositoryUrl,
         generatedAt: timestamp,
-        fileCount: codemapResult.fileCount,
+        fileCount: analysis?.insights.totalFiles || codemapResult.fileCount,
         totalSize: codemapResult.totalSize,
+        totalLines: analysis?.insights.totalLines || 0,
         topLanguages: codemapResult.topLanguages || [],
-        directories: codemapResult.directories || 0
+        directories: codemapResult.directories || 0,
+        packageManagers: analysis?.insights.packageManagers || [],
+        frameworks: analysis?.insights.frameworks || []
     };
 
     if (format === 'markdown' || format === 'both') {
-        baseOutput.codemap = formatMarkdown(codemapResult.rawOutput, repoName, timestamp);
+        baseOutput.codemap = formatMarkdown(codemapResult.rawOutput, repoName, timestamp, visualReport);
     }
 
     if (format === 'json' || format === 'both') {
-        baseOutput.codemapJson = formatJson(codemapResult, repoName);
+        baseOutput.codemapJson = formatJson(codemapResult, repoName, analysis);
+    }
+
+    // Add detailed analysis
+    if (analysis) {
+        baseOutput.analysis = {
+            largestFiles: analysis.insights.largestFiles,
+            languageDistribution: analysis.languages,
+            filesByType: groupFilesByType(analysis.fileStructure)
+        };
     }
 
     // Add usage instructions
@@ -45,13 +59,28 @@ async function formatOutput(codemapResult, repositoryUrl, format = 'markdown') {
 }
 
 /**
+ * Group files by type
+ */
+function groupFilesByType(fileStructure) {
+    const grouped = {};
+    fileStructure.forEach(file => {
+        if (!grouped[file.type]) {
+            grouped[file.type] = 0;
+        }
+        grouped[file.type]++;
+    });
+    return grouped;
+}
+
+/**
  * Format as enhanced markdown
  * @param {string} rawOutput - Raw codemap output
  * @param {string} repoName - Repository name
  * @param {string} timestamp - Generation timestamp
+ * @param {string} visualReport - Visual diagrams
  * @returns {string} Formatted markdown
  */
-function formatMarkdown(rawOutput, repoName, timestamp) {
+function formatMarkdown(rawOutput, repoName, timestamp, visualReport = '') {
     const header = `# Codemap: ${repoName}
 
 **Generated**: ${timestamp}
@@ -74,11 +103,11 @@ function formatMarkdown(rawOutput, repoName, timestamp) {
 
 ---
 
-## Repository Structure
-
 `;
 
-    return header + rawOutput + `
+    const visualSection = visualReport ? `## Visual Analysis\n\n\`\`\`\n${visualReport}\n\`\`\`\n\n---\n\n` : '';
+
+    return header + visualSection + `## Repository Structure\n\n` + rawOutput + `
 
 ---
 

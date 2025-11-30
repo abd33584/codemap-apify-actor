@@ -7,6 +7,8 @@ const { Actor } = require('apify');
 const { cloneRepository, cleanupRepository } = require('./github-cloner');
 const { runCodemap } = require('./codemap-runner');
 const { formatOutput } = require('./output-formatter');
+const { analyzeRepository } = require('./code-analyzer');
+const { generateVisualReport } = require('./diagram-generator');
 
 Actor.main(async () => {
     console.log('🗺️  Codemap Generator Actor starting...');
@@ -49,12 +51,25 @@ Actor.main(async () => {
         });
         console.log('✅ Codemap generated');
 
+        // Step 2.5: Perform deep code analysis
+        console.log('🔬 Analyzing code structure...');
+        const analysis = await analyzeRepository(repoPath);
+        console.log('✅ Analysis complete');
+
+        // Step 2.6: Generate visual diagrams
+        console.log('📊 Generating visual diagrams...');
+        const repoName = input.repositoryUrl.match(/github\.com\/([^/]+\/[^/]+)/)?.[1] || 'repository';
+        const visualReport = generateVisualReport(analysis, repoName);
+        console.log('✅ Diagrams generated');
+
         // Step 3: Format output
         console.log('📝 Formatting output...');
         const output = await formatOutput(
             codemapResult,
             input.repositoryUrl,
-            input.outputFormat || 'markdown'
+            input.outputFormat || 'markdown',
+            analysis,
+            visualReport
         );
         console.log('✅ Output formatted');
 
