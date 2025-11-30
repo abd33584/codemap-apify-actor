@@ -7,9 +7,6 @@ USER root
 # Install curl and unzip using apk (Alpine Linux package manager)
 RUN apk add --no-cache curl unzip
 
-# Switch back to default user
-USER myuser
-
 # Copy package files
 COPY package*.json ./
 
@@ -19,15 +16,16 @@ RUN npm install --production
 # Copy source code
 COPY . ./
 
-# Copy codemap binary for Linux (Apify runs on Linux)
-RUN mkdir -p binaries
-
-# Download codemap Linux binary
-RUN curl -L -o codemap-linux.zip https://github.com/JordanCoin/codemap/releases/download/v2.4/codemap-linux-amd64.zip \
+# Create binaries directory and download codemap binary
+RUN mkdir -p binaries \
+    && curl -L -o codemap-linux.zip https://github.com/JordanCoin/codemap/releases/download/v2.4/codemap-linux-amd64.zip \
     && unzip codemap-linux.zip -d /tmp/codemap \
     && mv /tmp/codemap/codemap-linux-amd64/codemap binaries/codemap-linux \
     && chmod +x binaries/codemap-linux \
     && rm -rf /tmp/codemap codemap-linux.zip
+
+# Switch back to default node user (standard in Node.js images)
+USER node
 
 # Set the command to run the actor
 CMD ["npm", "start"]
