@@ -1,6 +1,9 @@
 # Use Apify's base image with Node.js
 FROM apify/actor-node:16
 
+# Install curl and unzip
+RUN apt-get update && apt-get install -y curl unzip && rm -rf /var/lib/apt/lists/*
+
 # Copy package files
 COPY package*.json ./
 
