@@ -1,5 +1,5 @@
-# Use official Node.js image (Debian-based) instead of Alpine for glibc compatibility
-FROM node:16-bullseye-slim
+# Use official Node.js image (Debian Bookworm) for GLIBC 2.36 compatibility
+FROM node:18-bookworm-slim
 
 # Install git (needed for cloning repositories)
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
