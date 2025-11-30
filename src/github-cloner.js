@@ -14,21 +14,23 @@ const os = require('os');
  * @param {string} branch - Branch to clone
  * @returns {Promise<string>} Path to cloned repository
  */
-async function cloneRepository(repositoryUrl, branch = 'main') {
+async function cloneRepository(repositoryUrl, branch = null) {
     // Create temporary directory
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'codemap-'));
 
-    console.log(`Cloning ${repositoryUrl} (branch: ${branch}) to ${tempDir}...`);
+    console.log(`Cloning ${repositoryUrl}${branch ? ` (branch: ${branch})` : ''} to ${tempDir}...`);
 
     try {
         const git = simpleGit();
 
-        // Clone with depth 1 for speed (we don't need history)
-        await git.clone(repositoryUrl, tempDir, [
-            '--depth', '1',
-            '--single-branch',
-            '--branch', branch
-        ]);
+        const cloneOptions = ['--depth', '1'];
+
+        // If branch specified, use it; otherwise clone default branch
+        if (branch) {
+            cloneOptions.push('--single-branch', '--branch', branch);
+        }
+
+        await git.clone(repositoryUrl, tempDir, cloneOptions);
 
         console.log('✅ Clone successful');
         return tempDir;
@@ -40,7 +42,7 @@ async function cloneRepository(repositoryUrl, branch = 'main') {
         if (error.message.includes('Repository not found')) {
             throw new Error(`Repository not found: ${repositoryUrl}. Make sure it's public or provide authentication.`);
         } else if (error.message.includes('Remote branch')) {
-            throw new Error(`Branch '${branch}' not found in repository ${repositoryUrl}`);
+            throw new Error(`Branch '${branch}' not found in repository ${repositoryUrl}. Try 'master' or leave branch empty to use default.`);
         } else {
             throw new Error(`Failed to clone repository: ${error.message}`);
         }
