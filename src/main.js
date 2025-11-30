@@ -21,7 +21,7 @@ Actor.main(async () => {
 
     console.log('📥 Input received:', {
         repository: input.repositoryUrl,
-        branch: input.branch || 'main',
+        branch: input.branch || '(default)',
         format: input.outputFormat || 'markdown'
     });
 
@@ -32,7 +32,7 @@ Actor.main(async () => {
         console.log('📦 Cloning repository...');
         repoPath = await cloneRepository(
             input.repositoryUrl,
-            input.branch || 'main'
+            input.branch || null
         );
         console.log('✅ Repository cloned to:', repoPath);
 
