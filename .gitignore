@@ -25,7 +25,9 @@ Thumbs.db
 *.swp
 *.swo
 
-# Note: binaries/ is now committed to repo for Apify deployment
+# Binaries (will be downloaded during build unless provided)
+binaries/*
+!binaries/codemap-linux
 
 # Temp
 tmp/
