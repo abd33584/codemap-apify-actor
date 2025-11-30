@@ -18,16 +18,15 @@ COPY . ./
 
 # Create binaries directory and download codemap binary
 RUN mkdir -p binaries \
-    && cd binaries \
-    && echo "Downloading codemap binary..." \
-    && wget --no-check-certificate -O codemap-linux https://github.com/JordanCoin/codemap/releases/download/v2.4/codemap-linux-amd64 \
-    && echo "Download complete. File info:" \
-    && file codemap-linux || echo "file command not available" \
-    && ls -lh codemap-linux \
-    && chmod 755 codemap-linux \
-    && ls -la \
-    && cd .. \
-    && chown -R node:node binaries
+    && wget -O /tmp/codemap.tar.gz https://github.com/JordanCoin/codemap/releases/download/v2.4/codemap-linux-amd64.tar.gz \
+    && tar -tzf /tmp/codemap.tar.gz \
+    && tar -xzf /tmp/codemap.tar.gz -C /tmp \
+    && ls -laR /tmp/codemap* \
+    && cp /tmp/codemap-linux-amd64/codemap binaries/codemap-linux \
+    && chmod 755 binaries/codemap-linux \
+    && chown -R node:node binaries \
+    && rm -rf /tmp/codemap* \
+    && ls -la binaries/
 
 # Switch back to default node user (standard in Node.js images)
 USER node
