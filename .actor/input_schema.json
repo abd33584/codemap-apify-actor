@@ -1,0 +1,64 @@
+{
+  "title": "Codemap Generator Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "repositoryUrl": {
+      "title": "Repository URL",
+      "type": "string",
+      "description": "GitHub repository URL (e.g., https://github.com/user/repo)",
+      "editor": "textfield",
+      "example": "https://github.com/JordanCoin/codemap",
+      "pattern": "^https://github\\.com/[^/]+/[^/]+/?$"
+    },
+    "branch": {
+      "title": "Branch",
+      "type": "string",
+      "description": "Git branch to analyze (default: main)",
+      "editor": "textfield",
+      "default": "main",
+      "example": "main"
+    },
+    "outputFormat": {
+      "title": "Output Format",
+      "type": "string",
+      "description": "Format for the codemap output",
+      "editor": "select",
+      "default": "markdown",
+      "enum": ["markdown", "json", "both"],
+      "enumTitles": ["Markdown (AI-optimized)", "JSON (Programmatic)", "Both formats"]
+    },
+    "includeDependencies": {
+      "title": "Include Dependencies",
+      "type": "boolean",
+      "description": "Show import/dependency relationships between files",
+      "editor": "checkbox",
+      "default": false
+    },
+    "languageFilter": {
+      "title": "Language Filter",
+      "type": "string",
+      "description": "Filter by specific language (optional, e.g., 'python', 'javascript')",
+      "editor": "textfield",
+      "example": "python"
+    },
+    "excludePatterns": {
+      "title": "Exclude Patterns",
+      "type": "array",
+      "description": "Glob patterns to exclude (in addition to defaults)",
+      "editor": "stringList",
+      "default": [],
+      "example": ["*.test.js", "**/__mocks__/**"]
+    },
+    "maxFileSize": {
+      "title": "Max File Size (MB)",
+      "type": "integer",
+      "description": "Skip files larger than this (in MB)",
+      "editor": "number",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 100
+    }
+  },
+  "required": ["repositoryUrl"]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "codemap-actor",
+  "version": "1.0.0",
+  "description": "Generate instant codebase maps from any GitHub repository for AI tools",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "codemap",
+    "github",
+    "repository",
+    "analyzer",
+    "AI",
+    "documentation",
+    "codebase"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "apify": "^3.1.10",
+    "simple-git": "^3.21.0",
+    "marked": "^11.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

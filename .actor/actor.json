@@ -1,0 +1,38 @@
+{
+  "actorSpecification": 1,
+  "name": "codemap-generator",
+  "title": "Codemap Generator - AI-Ready Repository Analysis",
+  "description": "Generate instant, AI-optimized codebase maps from any GitHub repository. Perfect for ChatGPT, Claude, and other AI coding assistants. Saves 85% on AI tokens by providing compact project structure.",
+  "version": "1.0.0",
+  "meta": {
+    "templateId": "javascript-node"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "categories": ["DEVELOPMENT"],
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Codemap Results",
+      "description": "Generated codemaps and repository analysis",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "repository",
+              "generatedAt",
+              "fileCount",
+              "totalSize",
+              "topLanguages"
+            ]
+          },
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}

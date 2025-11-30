@@ -1,0 +1,85 @@
+{
+  "repository": "JordanCoin/codemap",
+  "repositoryUrl": "https://github.com/JordanCoin/codemap",
+  "generatedAt": "2025-11-30T12:59:52.184Z",
+  "fileCount": 43,
+  "totalSize": "1.3MB",
+  "topLanguages": [
+    {
+      "language": "scm",
+      "count": 16
+    },
+    {
+      "language": "go",
+      "count": 13
+    },
+    {
+      "language": "md",
+      "count": 2
+    },
+    {
+      "language": "png",
+      "count": 2
+    },
+    {
+      "language": "sh",
+      "count": 2
+    }
+  ],
+  "directories": 0,
+  "codemap": "# Codemap: JordanCoin/codemap\n\n**Generated**: 2025-11-30T12:59:52.184Z\n**Tool**: Codemap Generator (Apify Actor)\n**Purpose**: AI-optimized project structure for ChatGPT, Claude, and other AI coding assistants\n\n---\n\n## How to Use This Codemap\n\n### For AI Tools (ChatGPT, Claude, etc.)\n1. Copy the entire content below\n2. Paste at the start of your AI conversation\n3. AI will now understand your full project structure instantly\n\n### For Developers\n- Quick project overview\n- Find files and functions fast\n- Understand architecture at a glance\n\n---\n\n## Repository Structure\n\n╭──────────────────────── codemap-EjDWGu ────────────────────────╮\n│ Files: 43 | Size: 1.3MB                                        │\n│ Top Extensions: .scm (16), .go (13), .md (2), .png (2), .sh (2) │\n╰────────────────────────────────────────────────────────────────╯\n\u001b[1mcodemap-EjDWGu\u001b[0m\n├── \u001b[1;34m  .github/workflows/\u001b[0m \u001b[2m(14.2KB)\u001b[0m\n│   └── \u001b[1m\u001b[31m⭐️ release.yml\u001b[0m\u001b[2m\u001b[0m \n├── \u001b[1;34m  assets/\u001b[0m \u001b[2m(3 files, 1.2MB)\u001b[0m\n│   └── \u001b[37mcodemap.png\u001b[0m\u001b[2m\u001b[0m          \u001b[37mskyline-animated.gif\u001b[0m\u001b[2m\u001b[0m \u001b[37mskyline.png\u001b[0m\u001b[2m\u001b[0m          \n├── \u001b[1;34m  mcp/\u001b[0m \u001b[2m(8.4KB)\u001b[0m\n│   └── \u001b[36mmain.go\u001b[0m\u001b[2m\u001b[0m \n├── \u001b[1;34m  render/\u001b[0m \u001b[2m(4 files, 42.4KB, all .go)\u001b[0m\n│   └── \u001b[36mcolors\u001b[0m\u001b[2m\u001b[0m      \u001b[1m\u001b[36m⭐️ depgraph\u001b[0m\u001b[2m\u001b[0m \u001b[1m\u001b[36m⭐️ skyline\u001b[0m\u001b[2m\u001b[0m  \u001b[1m\u001b[36m⭐️ tree\u001b[0m\u001b[2m\u001b[0m     \n├── \u001b[1;34m  scanner/\u001b[0m \u001b[2m(24 files, 32.9KB)\u001b[0m\n│   ├── \u001b[1;34m  queries/\u001b[0m \u001b[2m(16 files, 6.8KB, all .scm)\u001b[0m\n│   │   └── \u001b[37mbash\u001b[0m\u001b[2m\u001b[0m       \u001b[37mdart\u001b[0m\u001b[2m\u001b[0m       \u001b[37mkotlin\u001b[0m\u001b[2m\u001b[0m     \u001b[37mruby\u001b[0m\u001b[2m\u001b[0m       \n│   │       \u001b[37mc\u001b[0m\u001b[2m\u001b[0m          \u001b[37mgo\u001b[0m\u001b[2m\u001b[0m         \u001b[37mphp\u001b[0m\u001b[2m\u001b[0m        \u001b[37mrust\u001b[0m\u001b[2m\u001b[0m       \n│   │       \u001b[37mc_sharp\u001b[0m\u001b[2m\u001b[0m    \u001b[37mjava\u001b[0m\u001b[2m\u001b[0m       \u001b[37mpython\u001b[0m\u001b[2m\u001b[0m     \u001b[37mswift\u001b[0m\u001b[2m\u001b[0m      \n│   │       \u001b[37mcpp\u001b[0m\u001b[2m\u001b[0m        \u001b[37mjavascript\u001b[0m\u001b[2m\u001b[0m \u001b[37mr\u001b[0m\u001b[2m\u001b[0m          \u001b[37mtypescript\u001b[0m\u001b[2m\u001b[0m \n│   └── \u001b[1;37mbuild-grammars.sh\u001b[0m\u001b[2m\u001b[0m  \u001b[36mgrammar.go\u001b[0m\u001b[2m\u001b[0m         \u001b[36mtypes.go\u001b[0m\u001b[2m\u001b[0m           \n│       \u001b[36mdeps.go\u001b[0m\u001b[2m\u001b[0m            \u001b[36mgrammar_unix.go\u001b[0m\u001b[2m\u001b[0m    \u001b[36mwalker.go\u001b[0m\u001b[2m\u001b[0m          \n│       \u001b[36mgit.go\u001b[0m\u001b[2m\u001b[0m             \u001b[36mgrammar_windows.go\u001b[0m\u001b[2m\u001b[0m \n└── \u001b[2;37m.gitignore\u001b[0m\u001b[2m\u001b[0m   \u001b[37mLICENSE\u001b[0m\u001b[2m\u001b[0m      \u001b[1m\u001b[32m⭐️ README.md\u001b[0m\u001b[2m\u001b[0m \u001b[36mgo.mod\u001b[0m\u001b[2m\u001b[0m       \u001b[36mmain.go\u001b[0m\u001b[2m\u001b[0m      \n    \u001b[32mCLAUDE.md\u001b[0m\u001b[2m\u001b[0m    \u001b[37mMakefile\u001b[0m\u001b[2m\u001b[0m     \u001b[31mcodemap.rb\u001b[0m\u001b[2m\u001b[0m   \u001b[36mgo.sum\u001b[0m\u001b[2m\u001b[0m       \u001b[1;37mrelease.sh\u001b[0m\u001b[2m\u001b[0m   \n\n\n---\n\n## Tips for AI Assistants\n\nWhen analyzing this codemap:\n- ⭐ Files marked with ⭐ are the largest/most important\n- Languages are color-coded for easy scanning\n- Directory structure shows project organization\n- Import statements reveal dependencies\n- Function/class listings show key components\n\n**Token Efficiency**: This codemap represents hundreds of files in a compact, scannable format - saving thousands of tokens compared to pasting individual files.\n",
+  "codemapJson": {
+    "project": "JordanCoin/codemap",
+    "statistics": {
+      "files": 43,
+      "size": "1.3MB",
+      "directories": 0,
+      "languages": [
+        {
+          "language": "scm",
+          "count": 16
+        },
+        {
+          "language": "go",
+          "count": 13
+        },
+        {
+          "language": "md",
+          "count": 2
+        },
+        {
+          "language": "png",
+          "count": 2
+        },
+        {
+          "language": "sh",
+          "count": 2
+        }
+      ]
+    },
+    "structure": {
+      "directories": [],
+      "files": [
+        "\u001b[1;34m  .github/workflows/\u001b[0m \u001b[2m(14.2KB)\u001b[0m",
+        "\u001b[1m\u001b[31m⭐️ release.yml\u001b[0m\u001b[2m\u001b[0m",
+        "\u001b[1;34m  assets/\u001b[0m \u001b[2m(3 files, 1.2MB)\u001b[0m",
+        "\u001b[37mcodemap.png\u001b[0m\u001b[2m\u001b[0m          \u001b[37mskyline-animated.gif\u001b[0m\u001b[2m\u001b[0m \u001b[37mskyline.png\u001b[0m\u001b[2m\u001b[0m",
+        "\u001b[1;34m  mcp/\u001b[0m \u001b[2m(8.4KB)\u001b[0m",
+        "\u001b[36mmain.go\u001b[0m\u001b[2m\u001b[0m",
+        "\u001b[1;34m  render/\u001b[0m \u001b[2m(4 files, 42.4KB, all .go)\u001b[0m",
+        "\u001b[36mcolors\u001b[0m\u001b[2m\u001b[0m      \u001b[1m\u001b[36m⭐️ depgraph\u001b[0m\u001b[2m\u001b[0m \u001b[1m\u001b[36m⭐️ skyline\u001b[0m\u001b[2m\u001b[0m  \u001b[1m\u001b[36m⭐️ tree\u001b[0m\u001b[2m\u001b[0m",
+        "\u001b[1;34m  scanner/\u001b[0m \u001b[2m(24 files, 32.9KB)\u001b[0m",
+        "\u001b[1;34m  queries/\u001b[0m \u001b[2m(16 files, 6.8KB, all .scm)\u001b[0m",
+        "\u001b[37mbash\u001b[0m\u001b[2m\u001b[0m       \u001b[37mdart\u001b[0m\u001b[2m\u001b[0m       \u001b[37mkotlin\u001b[0m\u001b[2m\u001b[0m     \u001b[37mruby\u001b[0m\u001b[2m\u001b[0m",
+        "\u001b[1;37mbuild-grammars.sh\u001b[0m\u001b[2m\u001b[0m  \u001b[36mgrammar.go\u001b[0m\u001b[2m\u001b[0m         \u001b[36mtypes.go\u001b[0m\u001b[2m\u001b[0m",
+        "\u001b[2;37m.gitignore\u001b[0m\u001b[2m\u001b[0m   \u001b[37mLICENSE\u001b[0m\u001b[2m\u001b[0m      \u001b[1m\u001b[32m⭐️ README.md\u001b[0m\u001b[2m\u001b[0m \u001b[36mgo.mod\u001b[0m\u001b[2m\u001b[0m       \u001b[36mmain.go\u001b[0m\u001b[2m\u001b[0m"
+      ]
+    },
+    "rawMap": "╭──────────────────────── codemap-EjDWGu ────────────────────────╮\n│ Files: 43 | Size: 1.3MB                                        │\n│ Top Extensions: .scm (16), .go (13), .md (2), .png (2), .sh (2) │\n╰────────────────────────────────────────────────────────────────╯\n\u001b[1mcodemap-EjDWGu\u001b[0m\n├── \u001b[1;34m  .github/workflows/\u001b[0m \u001b[2m(14.2KB)\u001b[0m\n│   └── \u001b[1m\u001b[31m⭐️ release.yml\u001b[0m\u001b[2m\u001b[0m \n├── \u001b[1;34m  assets/\u001b[0m \u001b[2m(3 files, 1.2MB)\u001b[0m\n│   └── \u001b[37mcodemap.png\u001b[0m\u001b[2m\u001b[0m          \u001b[37mskyline-animated.gif\u001b[0m\u001b[2m\u001b[0m \u001b[37mskyline.png\u001b[0m\u001b[2m\u001b[0m          \n├── \u001b[1;34m  mcp/\u001b[0m \u001b[2m(8.4KB)\u001b[0m\n│   └── \u001b[36mmain.go\u001b[0m\u001b[2m\u001b[0m \n├── \u001b[1;34m  render/\u001b[0m \u001b[2m(4 files, 42.4KB, all .go)\u001b[0m\n│   └── \u001b[36mcolors\u001b[0m\u001b[2m\u001b[0m      \u001b[1m\u001b[36m⭐️ depgraph\u001b[0m\u001b[2m\u001b[0m \u001b[1m\u001b[36m⭐️ skyline\u001b[0m\u001b[2m\u001b[0m  \u001b[1m\u001b[36m⭐️ tree\u001b[0m\u001b[2m\u001b[0m     \n├── \u001b[1;34m  scanner/\u001b[0m \u001b[2m(24 files, 32.9KB)\u001b[0m\n│   ├── \u001b[1;34m  queries/\u001b[0m \u001b[2m(16 files, 6.8KB, all .scm)\u001b[0m\n│   │   └── \u001b[37mbash\u001b[0m\u001b[2m\u001b[0m       \u001b[37mdart\u001b[0m\u001b[2m\u001b[0m       \u001b[37mkotlin\u001b[0m\u001b[2m\u001b[0m     \u001b[37mruby\u001b[0m\u001b[2m\u001b[0m       \n│   │       \u001b[37mc\u001b[0m\u001b[2m\u001b[0m          \u001b[37mgo\u001b[0m\u001b[2m\u001b[0m         \u001b[37mphp\u001b[0m\u001b[2m\u001b[0m        \u001b[37mrust\u001b[0m\u001b[2m\u001b[0m       \n│   │       \u001b[37mc_sharp\u001b[0m\u001b[2m\u001b[0m    \u001b[37mjava\u001b[0m\u001b[2m\u001b[0m       \u001b[37mpython\u001b[0m\u001b[2m\u001b[0m     \u001b[37mswift\u001b[0m\u001b[2m\u001b[0m      \n│   │       \u001b[37mcpp\u001b[0m\u001b[2m\u001b[0m        \u001b[37mjavascript\u001b[0m\u001b[2m\u001b[0m \u001b[37mr\u001b[0m\u001b[2m\u001b[0m          \u001b[37mtypescript\u001b[0m\u001b[2m\u001b[0m \n│   └── \u001b[1;37mbuild-grammars.sh\u001b[0m\u001b[2m\u001b[0m  \u001b[36mgrammar.go\u001b[0m\u001b[2m\u001b[0m         \u001b[36mtypes.go\u001b[0m\u001b[2m\u001b[0m           \n│       \u001b[36mdeps.go\u001b[0m\u001b[2m\u001b[0m            \u001b[36mgrammar_unix.go\u001b[0m\u001b[2m\u001b[0m    \u001b[36mwalker.go\u001b[0m\u001b[2m\u001b[0m          \n│       \u001b[36mgit.go\u001b[0m\u001b[2m\u001b[0m             \u001b[36mgrammar_windows.go\u001b[0m\u001b[2m\u001b[0m \n└── \u001b[2;37m.gitignore\u001b[0m\u001b[2m\u001b[0m   \u001b[37mLICENSE\u001b[0m\u001b[2m\u001b[0m      \u001b[1m\u001b[32m⭐️ README.md\u001b[0m\u001b[2m\u001b[0m \u001b[36mgo.mod\u001b[0m\u001b[2m\u001b[0m       \u001b[36mmain.go\u001b[0m\u001b[2m\u001b[0m      \n    \u001b[32mCLAUDE.md\u001b[0m\u001b[2m\u001b[0m    \u001b[37mMakefile\u001b[0m\u001b[2m\u001b[0m     \u001b[31mcodemap.rb\u001b[0m\u001b[2m\u001b[0m   \u001b[36mgo.sum\u001b[0m\u001b[2m\u001b[0m       \u001b[1;37mrelease.sh\u001b[0m\u001b[2m\u001b[0m   \n"
+  },
+  "usage": {
+    "forAI": "Copy the codemap content and paste it at the start of your AI conversation for instant project context.",
+    "forDocs": "Use the markdown output for project documentation or README files.",
+    "forAPI": "Use the JSON output for programmatic processing or integration with other tools."
+  }
+}
