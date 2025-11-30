@@ -1,8 +1,14 @@
 # Use Apify's base image with Node.js
 FROM apify/actor-node:16
 
-# Install curl and unzip
-RUN apt-get update && apt-get install -y curl unzip && rm -rf /var/lib/apt/lists/*
+# Switch to root user to install packages
+USER root
+
+# Install curl and unzip using apk (Alpine Linux package manager)
+RUN apk add --no-cache curl unzip
+
+# Switch back to default user
+USER myuser
 
 # Copy package files
 COPY package*.json ./
