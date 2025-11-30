@@ -19,12 +19,12 @@ COPY . ./
 # Create binaries directory and download codemap binary
 RUN mkdir -p binaries \
     && cd binaries \
-    && wget -O codemap-linux.tar.gz https://github.com/JordanCoin/codemap/releases/download/v2.4/codemap-linux-amd64.tar.gz \
-    && tar -xzf codemap-linux.tar.gz \
-    && ls -laR \
-    && mv codemap-linux-amd64/codemap codemap-linux 2>/dev/null || mv */codemap codemap-linux 2>/dev/null || mv codemap codemap-linux 2>/dev/null || find . -name "codemap" -type f -exec mv {} codemap-linux \; \
+    && echo "Downloading codemap binary..." \
+    && wget --no-check-certificate -O codemap-linux https://github.com/JordanCoin/codemap/releases/download/v2.4/codemap-linux-amd64 \
+    && echo "Download complete. File info:" \
+    && file codemap-linux || echo "file command not available" \
+    && ls -lh codemap-linux \
     && chmod 755 codemap-linux \
-    && rm -rf codemap-linux.tar.gz codemap-linux-amd64 \
     && ls -la \
     && cd .. \
     && chown -R node:node binaries
