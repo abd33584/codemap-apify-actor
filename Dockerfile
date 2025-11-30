@@ -5,11 +5,12 @@ FROM apify/actor-node:16
 USER root
 
 # Install curl, unzip, git, and glibc compatibility for Alpine
-RUN apk add --no-cache curl unzip git \
+RUN apk add --no-cache curl unzip git libc6-compat \
     && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
     && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-2.35-r1.apk \
-    && apk add --no-cache --force-overwrite glibc-2.35-r1.apk \
-    && rm glibc-2.35-r1.apk
+    && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-bin-2.35-r1.apk \
+    && apk add --no-cache --force-overwrite glibc-2.35-r1.apk glibc-bin-2.35-r1.apk \
+    && rm glibc-2.35-r1.apk glibc-bin-2.35-r1.apk
 
 # Copy package files
 COPY package*.json ./
