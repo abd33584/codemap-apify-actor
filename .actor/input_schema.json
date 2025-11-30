@@ -14,9 +14,8 @@
     "branch": {
       "title": "Branch",
       "type": "string",
-      "description": "Git branch to analyze (default: main)",
+      "description": "Git branch to analyze (leave empty to use repository's default branch)",
       "editor": "textfield",
-      "default": "main",
       "example": "main"
     },
     "outputFormat": {
