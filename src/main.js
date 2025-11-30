@@ -19,9 +19,12 @@ Actor.main(async () => {
         throw new Error('Missing required input: repositoryUrl');
     }
 
+    // Normalize branch: treat empty string as null
+    const branch = input.branch && input.branch.trim() !== '' ? input.branch.trim() : null;
+
     console.log('📥 Input received:', {
         repository: input.repositoryUrl,
-        branch: input.branch || '(default)',
+        branch: branch || '(default)',
         format: input.outputFormat || 'markdown'
     });
 
@@ -32,7 +35,7 @@ Actor.main(async () => {
         console.log('📦 Cloning repository...');
         repoPath = await cloneRepository(
             input.repositoryUrl,
-            input.branch || null
+            branch
         );
         console.log('✅ Repository cloned to:', repoPath);
 
