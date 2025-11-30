@@ -1,16 +1,11 @@
-# Use Apify's base image with Node.js
-FROM apify/actor-node:16
+# Use official Node.js image (Debian-based) instead of Alpine for glibc compatibility
+FROM node:16-bullseye-slim
 
-# Switch to root user to install packages
-USER root
+# Install git (needed for cloning repositories)
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-# Install curl, unzip, git, and glibc compatibility for Alpine
-RUN apk add --no-cache curl unzip git libc6-compat \
-    && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
-    && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-2.35-r1.apk \
-    && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.35-r1/glibc-bin-2.35-r1.apk \
-    && apk add --no-cache --force-overwrite glibc-2.35-r1.apk glibc-bin-2.35-r1.apk \
-    && rm glibc-2.35-r1.apk glibc-bin-2.35-r1.apk
+# Create app directory
+WORKDIR /usr/src/app
 
 # Copy package files
 COPY package*.json ./
@@ -22,11 +17,9 @@ RUN npm install --production
 COPY . ./
 
 # Set binary permissions (binary is committed to repo)
-RUN chmod 755 binaries/codemap-linux \
-    && chown -R node:node binaries \
-    && ls -la binaries/
+RUN chmod 755 binaries/codemap-linux && ls -la binaries/
 
-# Switch back to default node user (standard in Node.js images)
+# Run as non-root user
 USER node
 
 # Set the command to run the actor
